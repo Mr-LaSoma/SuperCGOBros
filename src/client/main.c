@@ -2,6 +2,8 @@
 #include <raylib.h>
 #include "mainconf.h"
 
+#include "anim.h"
+
 int main() {
 
     #if SCREEN_CONFIG_FULLSCREEN

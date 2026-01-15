@@ -66,7 +66,7 @@
 
 #pragma endregion
 
-
+#define ASSETS_STD_PATH PROJECT_ROOT_PATH+"/src/client/assets"
 extern const AnimationInfo CharactersAnimations[CHARACTER_COUNT][FORM_COUNT][ANIMATION_COUNT];
 
 // AnimationsNextFrame is the function that handles the logic

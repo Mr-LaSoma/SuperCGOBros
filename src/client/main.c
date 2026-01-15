@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <raylib.h>
 #include "mainconf.h"
-
 #include "anim.h"
+#include "player.h"
 
 int main() {
 
@@ -14,6 +14,7 @@ int main() {
     #endif
 
     SetTargetFPS(SCREEN_CONFIG_TARGET_FPS);
+    
 
     while (!WindowShouldClose())
     {

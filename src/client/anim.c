@@ -1,5 +1,5 @@
 #include "anim.h"
-
+#include "utils.h"
 
 const AnimationInfo CharactersAnimations[CHARACTER_COUNT][FORM_COUNT][ANIMATION_COUNT] = {
     [CHAR_MARIO] = {
@@ -55,3 +55,24 @@ const AnimationInfo CharactersAnimations[CHARACTER_COUNT][FORM_COUNT][ANIMATION_
         },
     }
 };
+
+/// @brief AnimationsNextFrame is the function that handles the logic
+/// to check if the animation should go into a next frame.
+/// @param anim The animation
+/// @return returns the rectangle that rappresents the frame (see DrawTextureRec from raylib) 
+Rectangle *AnimationCurrentFrame(Animation *anim) {
+    anim->ElapsedTime += DELTA_TIME;
+
+    if (anim->ElapsedTime < anim->FrameDelay) {
+        return &anim->Frames[anim->CurrentFrame];
+    };
+
+    anim->ElapsedTime = 0;
+    anim->CurrentFrame++;
+
+    if (anim->CurrentFrame >= anim->FrameCount) {
+        anim->CurrentFrame = 0;
+    }
+
+    return &anim->Frames[anim->CurrentFrame];
+}

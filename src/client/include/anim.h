@@ -29,16 +29,22 @@
 #pragma endregion
 #pragma region Enum related
     
-    typedef enum { CHAR_MARIO, CHAR_LUIGI, } CharacterType; // Enum used to divide every animation infos by characters
+    typedef enum { CHAR_MARIO, CHAR_LUIGI, } CharacterType; // Enum used to divide every animation infos by characters (Mario, Luigi, ecc...)
     #define CHARACTER_COUNT 2
 
-    typedef enum { FORM_NORMAL, FORM_SUPER, FORM_FAIRY, } CharacterForm; // Enum used to divide every animation by character form
+    typedef enum { FORM_NORMAL, FORM_SUPER, FORM_FAIRY, } CharacterForm; // Enum used to divide every animation by character form (Normal, Super, ecc...)
     #define FORM_COUNT 3
     
-    typedef enum { ANIM_IDLE, ANIM_WALK, ANIM_JUMP, ANIM_CLIMB, ANIM_SWIM, ANIM_DUCK, } AnimationType; // Enum used to divide every animation by Type 
+    typedef enum { ANIM_IDLE, ANIM_WALK, ANIM_JUMP, ANIM_CLIMB, ANIM_SWIM, ANIM_DUCK, } AnimationType; // Enum used to divide every animation by Type (Idle, Walk, ecc...)
     #define ANIMATION_COUNT 6
 
     #pragma region AnimationsInfos
+
+        #define NORMAL_FRAME_HEIGHT 16 // Normal frames height in pixels
+        #define NORMAL_FRAME_WIDTH 13 // Normal frames width in pixels
+        #define SPECIAL_FRAME_HEIGHT 32 // Special frames height in pixels
+        #define SPECIAL_FRAME_HEIGHT 16 // Special frames width in pixels
+
 
         #define IDLE_FRAME_COUNT 1
         #define IDLE_FRAME_DELAY 1
@@ -69,6 +75,8 @@
 #define ASSETS_STD_PATH PROJECT_ROOT_PATH+"/src/client/assets"
 extern const AnimationInfo CharactersAnimations[CHARACTER_COUNT][FORM_COUNT][ANIMATION_COUNT];
 
-// AnimationsNextFrame is the function that handles the logic
-// to check if the animation should go into a next frame.
-Texture2D *AnimationsNextFrame(Animation *anim);
+/// @brief AnimationsNextFrame is the function that handles the logic
+/// to check if the animation should go into a next frame.
+/// @param anim The animation
+/// @return returns the rectangle that rappresents the frame (see DrawTextureRec from raylib) 
+Rectangle *AnimationCurrentFrame(Animation *anim);
